@@ -1,0 +1,14 @@
+/*11. Container With Most Water
+*/
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        area=0
+        l=0
+        h=len(height)-1
+        while(l<h):
+            area=max((h-l)*min(height[l],height[h]),area)
+            if(height[l]<height[h]):
+                l+=1
+            else:
+                h-=1
+        return area
