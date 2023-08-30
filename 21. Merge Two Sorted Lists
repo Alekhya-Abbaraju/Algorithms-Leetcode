@@ -1,0 +1,14 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        # checks if either list1 or list2 is empty
+        if not list1 or not list2:
+            return list1 or list2
+        #This bewlow  line sorts the two input lists based on the values of their head nodes
+        s,b = sorted((list1, list2), key=lambda x: x.val)
+        s.next = self.mergeTwoLists(s.next,b)
+        return s
