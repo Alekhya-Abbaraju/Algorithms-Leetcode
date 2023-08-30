@@ -1,0 +1,35 @@
+/*2. Add Two Numbers
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+*/
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        n1=''
+        n2=''
+        while(l1!=None):
+            #to get the value of the current node (l1.val)&convert it to a string using the str() function, and then concatenate it with the existing content of n1.
+            n1=str(l1.val)+n1
+            l1=l1.next
+        while(l2!=None):
+            n2=str(l2.val)+n2
+            l2=l2.next
+        #typecast
+        n3=int(n1)+int(n2)
+        l1=ListNode(0,None)
+        #rev
+        l1.val=n3%10
+        n3=n3/10
+        l2=l1
+        while n3>0:
+            l1.next= ListNode(0,None)
+            l1=l1.next
+            l1.val=n3%10
+            n3=n3/10
+        return l2
+
